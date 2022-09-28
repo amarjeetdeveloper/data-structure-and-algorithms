@@ -1,4 +1,22 @@
 // Window Sliding Technique is a computational technique which aims to reduce the use of nested loop and replace it with a single loop, thereby reducing the time complexity.
+// Overview
+
+    Sliding Window Technique is a popular method in algorithmic problems because of its high efficiency (mostly linear)
+    It helps to avoid computing repetitive problems by computing only the new part that's introduced in the data set and discarding the one that moves out, usually 1 at a time.
+    There are plenty of articles explaining the what and how, so this post isn't gonna repeat on that. This post is to sketch out a rough algorithm which can be tweaked for most problems on SW
+    This is meant to be a continuosly improving post and I'll keep updating it and add more problems as I progress.
+    Collaboration works wonders so I'd encourage anyone reading this post to feel free to contribute for the benefit of the community.
+
+Sample Problem: Longest Substring Without Repeating Characters.
+
+    Given a string s, find the length of the longest substring without repeating characters.
+
+Algorithm
+
+    Use a hashMap to keep track of the latest index of each letter
+    Keeping the left pointer at rest, move the right pointer by 1 letter at a time.
+    When a repeating character is encountered, update the maxLength and move the left pointer to max{left pointer, old last occurence of this character as available in the map}. We do a max because we don't want to take the left pointer backwards at any time (e.g. in "abba"), it will only move forward or stay still.
+    return max {right-left, maxLength}. Doing this outside the loop is essential as it handles strings with all unique chars.
 
 // Q. maximum sum subarray of size k
 
